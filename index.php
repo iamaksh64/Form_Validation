@@ -7,18 +7,59 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
     <title>Form Validation</title>
+    <style>
+        .error{
+            color: #FF0000;
+        }
+    </style>
 </head>
 <body>
     <?php
         $name = $age = $email = $website = $comment = $gender = "";
-
+        $nameErr = $ageErr = $emailErr = $websiteErr = $commentErr = $genderErr = "";    
+    
         if($_SERVER["REQUEST_METHOD"] == "POST"){
-            $name = user_input($_POST['name']);
-            $age = user_input($_POST['age']);
-            $email = user_input($_POST['email']);
-            $website = user_input($_POST['website']);
-            $comment = user_input($_POST['comment']);
-            $gender = user_input($_POST['gender']);
+            if(empty($_POST['name')){
+                $nameErr = "name is required";
+            }
+            else{
+                $name = user_input($_POST['name']);
+            }
+                            
+             if(empty($_POST['age')){
+                $ageErr = "age is required";
+            }
+            else{
+                $age = user_input($_POST['age']);
+            }
+                             
+            if(empty($_POST['email')){
+                $emailErr = "email is required";
+            }
+            else{
+                $email = user_input($_POST['email']);
+            }
+                            
+            if(empty($_POST['website')){
+                $websiteErr = "";
+            }
+            else{
+                $website = user_input($_POST['website']);
+            }
+                            
+            if(empty($_POST['comment')){
+                $commentErr = "";
+            }
+            else{
+                $comment = user_input($_POST['comment']);
+            }
+                            
+            if(empty($_POST['gender')){
+                $genderErr = "gender is required";
+            }
+            else{
+                $gender = user_input($_POST['gender']);
+            }
         }
 
         function user_input($info){
@@ -31,15 +72,16 @@
     <div class="container mt-3">
     <h2>Form Validation</h2><br><br>
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-        Name: <input type="text" name="name" class="form-control col-xs-2 w-25" placeholder="Enter your name"><br>
-        Age: <input type="text" name="age" class="form-control col-xs-2 w-25" placeholder="Enter your age"><br>
-        Email: <input type="text" name="email" class="form-control col-xs-2 w-25" placeholder="Enter your email"><br>
-        Website: <input type="text" name="website" class="form-control col-xs-2 w-25" placeholder="Enter your website"><br>
-        Comment: <textarea name="comment" cols="30" rows="5" class="form-control col-xs-2 w-25" placeholder="Type your comment"></textarea><br>
+        Name: <input type="text" name="name" class="form-control col-xs-2 w-25" placeholder="Enter your name"><span class="error">* <?php echo $nameErr; ?></span><br>
+        Age: <input type="text" name="age" class="form-control col-xs-2 w-25" placeholder="Enter your age"><span class="error">* <?php echo $ageErr; ?></span><br>
+        Email: <input type="text" name="email" class="form-control col-xs-2 w-25" placeholder="Enter your email"><span class="error">* <?php echo $emailErr; ?></span><br>
+        Website: <input type="text" name="website" class="form-control col-xs-2 w-25" placeholder="Enter your website"><span class="error">* <?php echo $websiteErr; ?></span><br>
+        Comment: <textarea name="comment" cols="30" rows="5" class="form-control col-xs-2 w-25" placeholder="Type your comment"></textarea><span class="error">* <?php echo $commentErr; ?></span><br>
         Gender:
         <input type="radio" name="gender" value="male"> Male
         <input type="radio" name="gender" value="female"> Female
         <input type="radio" name="gender" value="other"> Other
+        <span class="error">* <?php echo $genderErr; ?></span>
         <br><br>
         <input type="submit" value="Submit" name="submit" class="btn btn-primary"class="col-xs-2">
         <br><br>
