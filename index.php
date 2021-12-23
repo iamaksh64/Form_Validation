@@ -19,42 +19,42 @@
         $nameErr = $ageErr = $emailErr = $websiteErr = $commentErr = $genderErr = "";    
     
         if($_SERVER["REQUEST_METHOD"] == "POST"){
-            if(empty($_POST['name')){
+            if(empty($_POST['name'])){
                 $nameErr = "name is required";
             }
             else{
                 $name = user_input($_POST['name']);
             }
                             
-             if(empty($_POST['age')){
+             if(empty($_POST['age'])){
                 $ageErr = "age is required";
             }
             else{
                 $age = user_input($_POST['age']);
             }
                              
-            if(empty($_POST['email')){
+            if(empty($_POST['email'])){
                 $emailErr = "email is required";
             }
             else{
                 $email = user_input($_POST['email']);
             }
                             
-            if(empty($_POST['website')){
+            if(empty($_POST['website'])){
                 $websiteErr = "";
             }
             else{
                 $website = user_input($_POST['website']);
             }
                             
-            if(empty($_POST['comment')){
+            if(empty($_POST['comment'])){
                 $commentErr = "";
             }
             else{
                 $comment = user_input($_POST['comment']);
             }
                             
-            if(empty($_POST['gender')){
+            if(empty($_POST['gender'])){
                 $genderErr = "gender is required";
             }
             else{
@@ -78,9 +78,9 @@
         Website: <input type="text" name="website" class="form-control col-xs-2 w-25" placeholder="Enter your website"><span class="error">* <?php echo $websiteErr; ?></span><br>
         Comment: <textarea name="comment" cols="30" rows="5" class="form-control col-xs-2 w-25" placeholder="Type your comment"></textarea><span class="error">* <?php echo $commentErr; ?></span><br>
         Gender:
-        <input type="radio" name="gender" value="male"> Male
-        <input type="radio" name="gender" value="female"> Female
-        <input type="radio" name="gender" value="other"> Other
+        <input type="radio" name="gender" value="Male"> Male
+        <input type="radio" name="gender" value="Female"> Female
+        <input type="radio" name="gender" value="Other"> Other
         <span class="error">* <?php echo $genderErr; ?></span>
         <br><br>
         <input type="submit" value="Submit" name="submit" class="btn btn-primary"class="col-xs-2">
@@ -95,14 +95,6 @@
         <small>Comment: </small><h5 style="display:inline-block"><?php echo $comment; ?></h5><br>
         <small>Gender: </small><h5 style="display:inline-block"><?php echo $gender; ?></h5>
         
-<!--             
-        //     echo $name."<br>";
-        //     echo $age."<br>";
-        //     echo $email."<br>";
-        //     echo $website."<br>";
-        //     echo $comment."<br>";
-        //     echo $gender."<br>";
-         -->
         <br>
     </form>
     </div>
