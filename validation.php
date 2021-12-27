@@ -52,6 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }      
     }  
 
+    //Comment Validation
     if(empty($_POST["comment"])){
         $comment="";
     }else{
